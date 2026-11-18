@@ -8,7 +8,7 @@ app.get("/", (req, res) => {
   res.json({
     application: "DevOps Task Tracker",
     status: "running",
-    message: "ATU DevOps CI/CD Pipeline - Task 3"
+message: "ATU DevOps CI/CD Pipeline - Task 3 - Version 2"
   });
 });
 
