@@ -1,0 +1,9 @@
+
+node_modules
+.git
+.github
+coverage
+.env
+*.log
+README.md
+app.test.js

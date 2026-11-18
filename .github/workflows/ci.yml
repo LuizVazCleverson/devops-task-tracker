@@ -30,3 +30,6 @@ jobs:
 
       - name: Security audit
         run: npm audit --audit-level=moderate
+
+      - name: Build Docker image
+        run: docker build -t devops-task-tracker:ci .
