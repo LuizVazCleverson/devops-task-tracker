@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "ATU DevOps CI/CD Pipeline - Task 3",
   "main": "index.js",
-"scripts": {
-  "start": "node index.js",
-  "test": "jest --runInBand"
-},
-"repository": {
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest --runInBand",
+    "lint": "eslint ."
+  },
+  "repository": {
     "type": "git",
     "url": "git+https://github.com/LuizVazCleverson/devops-task-tracker.git"
   },
@@ -23,6 +24,7 @@
     "express": "^5.3.0"
   },
   "devDependencies": {
+    "eslint": "^9.39.5",
     "jest": "^29.7.0",
     "supertest": "^7.3.2"
   }
