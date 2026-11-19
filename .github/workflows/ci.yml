@@ -27,7 +27,8 @@ jobs:
 
       - name: Run automated tests
         run: npm test
-
+      - name: Static code analysis
+        run: npm run lint
       - name: Security audit
         run: npm audit --audit-level=moderate
 
