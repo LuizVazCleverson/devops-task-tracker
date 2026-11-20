@@ -32,8 +32,8 @@ jobs:
       - name: Security audit
         run: npm audit --audit-level=moderate
 
-      - name: Build Docker image
-        run: docker build -t devops-task-tracker:ci .
+      - name: Validate Docker Compose configuration
+        run: docker compose config -q
       - name: Deploy application with Docker Compose
         run: docker compose up -d --build
 
