@@ -34,3 +34,19 @@ jobs:
 
       - name: Build Docker image
         run: docker build -t devops-task-tracker:ci .
+      - name: Deploy application with Docker Compose
+        run: docker compose up -d --build
+
+      - name: Verify deployment health
+        run: |
+          docker compose ps
+          for attempt in {1..12}; do
+            if curl --fail --silent http://127.0.0.1:3002/health; then
+              echo "Deployment health check passed"
+              exit 0
+            fi
+            echo "Waiting for application..."
+            sleep 5
+          done
+          docker compose logs
+          exit 1
