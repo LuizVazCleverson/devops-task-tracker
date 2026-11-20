@@ -9,7 +9,7 @@ DevOps Task Tracker is a Node.js application developed to demonstrate the implem
 
 The project represents the initial technical foundation for a proposed software platform supporting construction subcontracting companies.
 
-The current phase focuses on automated testing, code quality, dependency security checks, and Docker image building.
+The current phase focuses on automated testing, code quality, dependency security checks, Docker containerisation, automated deployment using Docker Compose, application health verification, and structured HTTP logging.
 
 ## 2. Business Scenario
 
@@ -61,7 +61,10 @@ The pipeline performs the following steps:
 4. Runs automated tests using `npm test`.
 5. Performs static code analysis using `npm run lint`.
 6. Checks dependencies using `npm audit --audit-level=moderate`.
-7. Builds the Docker image.
+7. Validates the Docker Compose configuration using `docker compose config -q`.
+8. Builds and deploys the application in a temporary GitHub Actions runner using `docker compose up -d --build`.
+9. Verifies the deployed application through the `/health` endpoint.
+10. Displays container logs if the deployment health check fails.
 
 A successful workflow indicates that these configured checks have passed.
 
@@ -115,11 +118,21 @@ docker build -t devops-task-tracker .
 
 ## 8. Current Project Scope
 
-The current implementation demonstrates Continuous Integration.
+The current implementation demonstrates Continuous Integration (CI)
+and automated deployment verification using GitHub Actions and Docker Compose.
 
-The Docker image is built as part of the CI workflow, but the application is not automatically deployed to a production environment.
+The pipeline automatically installs dependencies, executes tests,
+performs static code analysis, checks dependency security,
+validates the Docker Compose configuration, builds the container image,
+and deploys the application within a temporary GitHub Actions runner.
 
-Automated deployment is a potential future enhancement.
+The deployed application is verified through its HTTP health endpoint.
+
+This deployment is temporary and used for pipeline validation.
+The application is not deployed to a permanent production environment.
+
+Production deployment, monitoring, and infrastructure management
+remain potential future enhancements.
 
 ## 9. Future Development — Level 2
 
